@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="progress">
+    <div class="progress-bar bg-success" role="progressbar" style="width: {{ prog }}%" aria-valuenow="{{ prog }}"
+         aria-valuemin="0" aria-valuemax="100">{{ prog }}%
+    </div>
+</div>
+<div style="width: 50%; float:left;height:100%">
+
+    <div class="card" style="width: 100%;">
+        <img class="card-img-top" src="{{ imfile }}" alt="{{ imfile }}">
+        <div class="card-body">
+            <p class="card-text" style="font-size: 1rem;">Relevance (1~5): Is this caption covers the correct image attributes, UNK represents the unknown</p>
+            <p class="card-text" style="font-size: 1rem;">Similar (1~5): Is this caption is similar to human generated caption?</p>
+            <p class="card-text" style="font-size: 1rem; color:#e85509">*1-Very Poor, 2-Poor, 3-Barely Acceptable,
+                4-Good, 5-Very Good </p>
+        </div>
+    </div>
+</div>
+
+<div style="width: 50%; float:right;max-height:100%;position:fixed;right:0;overflow:auto;">
+    <div style="width: 100%; float:center">
+        <div class="alert alert-primary" style="margin:0"> Evaluation # {{ postid }} | C-Image Caption.<span
+                class="badge badge-info" data-toggle="modal" data-target="#exampleModal">Help </span>
+        </div>
+    <p>Image. {{imid}} | Question. {{qid}}</p> -->
+        <form name="myForm" action="" method="post" onsubmit="">
+            <div class="card-header">
+                Please evaluate image description in following aspects.
+            </div>
+            <div class="alert alert-success" style="margin:0"> C: {{ explanation }} </div>
+            <ul class="list-group">
+                <li class="list-group-item">Relevance:</li>
+                <li class="option list-group-item">
+                    <input type="radio" name="fluent" value='1'> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent" value='2'> 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent" value='3'> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent" value='4'> 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent" value='5'> 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <li class="list-group-item">Similar:</li>
+                <li class="option list-group-item">
+                    <input type="radio" name="correct" value='1'> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct" value='2'> 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct" value='3'> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct" value='4'> 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct" value='5'> 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
+
+            <div class="alert alert-success" style="margin:0"> C: {{ explanation_u }} </div>
+            <ul class="list-group">
+                <li class="list-group-item">Relevance:</li>
+                <li class="option list-group-item">
+                    <input type="radio" name="fluent_u" value='1'> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_u" value='2'> 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_u" value='3'> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_u" value='4'> 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_u" value='5'> 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <li class="list-group-item">Similar:</li>
+                <li class="option list-group-item">
+                    <input type="radio" name="correct_u" value='1'> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_u" value='2'> 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_u" value='3'> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_u" value='4'> 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_u" value='5'> 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
+
+            <div class="alert alert-success" style="margin:0"> C: {{ explanation_g }} </div>
+            <ul class="list-group">
+                <li class="list-group-item">Relevance:</li>
+                <li class="option list-group-item">
+                    <input type="radio" name="fluent_g" value='1'> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_g" value='2'> 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_g" value='3'> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_g" value='4'> 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="fluent_g" value='5'> 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <li class="list-group-item">Similar:</li>
+                <li class="option list-group-item">
+                    <input type="radio" name="correct_g" value='1'> 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_g" value='2'> 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_g" value='3'> 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_g" value='4'> 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="correct_g" value='5'> 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
+
+            <input type='text' name="imid" value={{ imid }} readonly style='display:none'>
+            <input type='text' name="qid" value={{ qid }} readonly style='display:none'>
+            <!-- <input type='text'  name="question_type" value={{question_type}} readonly style='display:none'> -->
+            <input type='text' name="question_type" value="{{ question_type }}" readonly style='display:none'>
+            <p><input type=submit value=Next name="Submit" id="Submit" class="btn btn-dark btn-lg btn-block"></p>
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" style="width: 100%">
+    <div class="modal-dialog" role="document" style="width: 100%;max-width:1000px">
+        <div class="modal-content">
+            <img style="width: 100%" src="static/help.png" alt="Help">
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    // Delegate submit action
+    $(document).on('submit', 'form', function () {
+
+        var validate = true;
+        var unanswered = new Array();
+
+        // Loop through available sets
+        $('.option').each(function () {
+            // Question text
+            var question = $(this).prev();
+            // Validate
+            if (!$(this).find('input').is(':checked')) {
+                // Didn't validate ... dispaly alert or do something
+                unanswered.push(question.text());
+                question.css('color', 'red'); // Highlight unanswered question
+                validate = false;
+            }
+        });
+        if (unanswered.length > 0) {
+            msg = "Please answer the following questions:\n" + unanswered.join('\n');
+            alert(msg);
+        }
+        return validate;
+    });
+</script>
+</html>
